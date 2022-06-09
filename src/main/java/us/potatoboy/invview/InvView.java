@@ -3,7 +3,7 @@ package us.potatoboy.invview;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.command.argument.GameProfileArgumentType;
@@ -31,7 +31,7 @@ public class InvView implements ModInitializer {
         isLuckPerms = FabricLoader.getInstance().isModLoaded("luckperms");
         isOrigins = FabricLoader.getInstance().isModLoaded("origins");
 
-        CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
+        CommandRegistrationCallback.EVENT.register((dispatcher, context, dedicated) -> {
 
             LiteralCommandNode<ServerCommandSource> viewNode = CommandManager
                     .literal("view")
